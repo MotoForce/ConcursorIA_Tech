@@ -608,6 +608,138 @@ html{font-size:var(--a11y-font-scale,100%)}
 @media(max-width:520px){.video-grid{grid-template-columns:1fr}.video-meta-grid{grid-template-columns:1fr}.video-actions{grid-template-columns:1fr}.video-actions .primary{grid-column:auto}.video-url-row{grid-template-columns:1fr}.video-player-panel{padding:12px}.video-card-cover{min-height:112px}}
 </style>
 
+
+<style id="v361-session-menu-fixes">
+/* Menu lateral: rolagem própria, sem arrastar a página principal junto */
+.sidebar{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+  scrollbar-gutter:stable;
+}
+.sidebar nav{min-height:max-content}
+body.sidebar-open{overflow:hidden!important;overscroll-behavior:none}
+@media(max-width:620px){
+  .main{overflow-x:hidden!important;overflow-y:visible!important}
+  .sidebar{
+    top:0!important;
+    height:100dvh!important;
+    max-height:100dvh!important;
+    overscroll-behavior:contain!important;
+    touch-action:pan-y!important;
+  }
+  body.sidebar-open .sidebar{pointer-events:auto}
+}
+</style>
+
+
+<style id="v362-mini-mindmaps">
+.mini-mindmap-suite{margin-top:14px;background:
+  radial-gradient(circle at 90% 10%,rgba(253,190,215,.16),transparent 22%),
+  radial-gradient(circle at 8% 88%,rgba(110,218,255,.16),transparent 22%),
+  linear-gradient(180deg,rgba(10,24,41,.98),rgba(8,19,35,.98))}
+.mini-suite-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.mini-suite-head h2{margin:6px 0 8px}.mini-suite-head p{margin:0;color:var(--muted);max-width:800px}
+.mini-suite-summary{min-width:150px;padding:14px;border-radius:18px;background:rgba(255,255,255,.04);text-align:center;border:1px solid rgba(255,255,255,.06)}
+.mini-suite-summary strong{display:block;font-size:30px;line-height:1}.mini-suite-summary span{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.mini-suite-toolbar{display:grid;grid-template-columns:220px 1fr auto;gap:12px;align-items:end;margin-top:16px}
+.mini-suite-toolbar label{display:grid;gap:6px;color:var(--muted);font-size:12px}
+.mini-suite-toolbar input,.mini-suite-toolbar select{width:100%}
+.mini-suite-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mini-suite-stage{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:14px;margin-top:16px;align-items:start}
+.mini-suite-side{display:grid;gap:12px}
+.mini-side-card{padding:14px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+.mini-side-card h3{margin:6px 0 8px}.mini-side-card p{margin:0;color:var(--muted)}.mini-side-card ol{margin:8px 0 0 18px;color:#d8e7f3;font-size:12px;line-height:1.6}
+.mini-tag-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.mini-tag-list span{padding:6px 8px;border-radius:999px;background:#102742;border:1px solid rgba(90,200,255,.12);font-size:11px;color:#dff7ff}
+
+.mini-map-card{
+  position:relative;padding:18px;border-radius:26px;overflow:hidden;
+  background:linear-gradient(180deg,#ffffff,#f8fbff);color:#18304d;border:3px solid #f0d4ff;
+  box-shadow:0 16px 36px rgba(0,0,0,.18)
+}
+.mini-map-card::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(circle at 85% 8%,rgba(86,191,255,.17),transparent 18%),
+ radial-gradient(circle at 12% 88%,rgba(252,192,216,.22),transparent 20%),
+ radial-gradient(circle at 52% 47%,rgba(251,211,109,.08),transparent 25%);
+ pointer-events:none}
+.mini-map-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative}
+.mini-bubble{
+  min-height:194px;padding:14px;border-radius:26px;border:3px solid transparent;position:relative;
+  box-shadow:0 10px 18px rgba(29,53,82,.08)
+}
+.mini-bubble h4{margin:0 0 10px;font-size:17px;line-height:1.15;display:flex;align-items:center;gap:10px}
+.mini-bubble h4 strong{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;font-size:19px}
+.mini-bubble p{margin:0;color:#20324b;font-size:14px;line-height:1.45}
+.mini-bubble ul{margin:8px 0 0 18px;padding:0;color:#20324b;font-size:14px;line-height:1.4}
+.mini-bubble li+li{margin-top:5px}
+.bubble-what{background:#ffeaf1;border-color:#ff86a9}
+.bubble-what h4{color:#8c1845}.bubble-what h4 strong{color:#b01c57}
+.bubble-analogy{background:#e8f5ff;border-color:#63bfff}
+.bubble-analogy h4{color:#0b5898}.bubble-analogy h4 strong{color:#0b74c9}
+.bubble-application{background:#ecffe7;border-color:#8edb6c}
+.bubble-application h4{color:#2d7f18}.bubble-application h4 strong{color:#35971a}
+.bubble-terms{background:#f5ecff;border-color:#bd88ff}
+.bubble-terms h4{color:#6930a8}.bubble-terms h4 strong{color:#7d34cd}
+
+.mini-center-topic{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(34vw,350px);max-width:350px;min-width:270px;padding:16px 18px;border-radius:999px;
+  background:linear-gradient(180deg,#fffde7,#fff6cf);border:4px solid #f3a444;box-shadow:0 12px 24px rgba(0,0,0,.12);
+  text-align:center;z-index:2
+}
+.mini-center-topic h3{margin:0;color:#102d58;font-size:28px;line-height:1.02;text-transform:uppercase}
+.mini-center-topic p{margin:8px 0 0;color:#243a56;font-size:14px;line-height:1.3}
+.mini-center-topic .mini-open-book{display:block;margin-top:8px;font-size:30px}
+.mini-term-list{display:grid;gap:8px}
+.mini-term-item{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:flex-start;padding:8px 10px;border-radius:16px;background:rgba(255,255,255,.6)}
+.mini-term-item b{font-size:13px;color:#163252}.mini-term-item span{font-size:13px;color:#31435c}
+.mini-application-list{display:grid;gap:8px}
+.mini-app-item{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:flex-start;padding:8px 10px;border-radius:16px;background:rgba(255,255,255,.62)}
+.mini-app-item b{font-size:13px;color:#10304d}.mini-app-item span{font-size:13px;color:#31435c}
+.mini-footer-questions{margin-top:14px;padding:12px 14px;border-radius:22px;background:linear-gradient(90deg,#6b37ca,#7257f1);color:#fff;display:grid;grid-template-columns:auto repeat(4,1fr);gap:10px;align-items:center;position:relative}
+.mini-footer-questions strong{font-size:16px}
+.mini-question-pill{padding:9px 10px;border-radius:16px;background:rgba(255,255,255,.16);font-size:13px;text-align:center;border:1px solid rgba(255,255,255,.15)}
+.mini-thumb-strip{display:flex;gap:8px;overflow:auto;padding-top:12px;margin-top:4px;scrollbar-width:thin}
+.mini-thumb{min-width:220px;padding:10px 12px;border-radius:16px;background:#0f233b;border:1px solid rgba(255,255,255,.07);text-align:left;color:var(--text)}
+.mini-thumb.active{border-color:#5ae1ff;box-shadow:0 0 0 2px rgba(90,225,255,.08)}
+.mini-thumb b{display:block;font-size:13px}.mini-thumb span{display:block;margin-top:3px;font-size:11px;color:var(--muted)}
+.mini-empty{padding:24px;border-radius:18px;background:rgba(255,255,255,.04);text-align:center;color:var(--muted)}
+
+@media(max-width:1180px){
+  .mini-suite-stage{grid-template-columns:1fr}
+}
+@media(max-width:940px){
+  .mini-map-grid{grid-template-columns:1fr}
+  .mini-center-topic{position:relative;left:auto;top:auto;transform:none;width:auto;max-width:none;min-width:0;margin:2px 0}
+  .mini-footer-questions{grid-template-columns:1fr 1fr}
+  .mini-footer-questions strong{grid-column:1/-1;text-align:center}
+}
+@media(max-width:760px){
+  .mini-suite-head,.mini-suite-toolbar{grid-template-columns:1fr;display:grid}
+  .mini-suite-summary{min-width:0}
+  .mini-suite-toolbar{grid-template-columns:1fr}
+  .mini-suite-actions{display:grid;grid-template-columns:1fr 1fr 1fr}
+}
+@media(max-width:520px){
+  .mini-map-card{padding:12px}
+  .mini-bubble{min-height:auto}
+  .mini-bubble h4{font-size:16px}
+  .mini-bubble p,.mini-bubble ul,.mini-term-item b,.mini-term-item span,.mini-app-item b,.mini-app-item span{font-size:13px}
+  .mini-center-topic h3{font-size:21px}
+  .mini-footer-questions{grid-template-columns:1fr}
+  .mini-suite-actions{grid-template-columns:1fr}
+  .mini-thumb{min-width:170px}
+}
+</style>
+
+
+<style id="v364-auth-fix">
+#accessGate.hidden{display:none!important;pointer-events:none!important}
+body:not(.access-locked) #accessGate{pointer-events:none}
+</style>
+
 </head>
 
 <body class="access-locked">
@@ -627,23 +759,26 @@ html{font-size:var(--a11y-font-scale,100%)}
       <div class="access-form">
         <span class="eyebrow">ACESSO AO AMBIENTE</span>
         <h2>Entre com seu código</h2>
-        <p>Informe um dos códigos de acesso autorizados para liberar o ambiente. Informe seu código de acesso autorizado para liberar o ambiente.</p>
+        <p>Informe seu código de acesso autorizado para liberar o ambiente.</p>
+
         <div class="token-panel">
           <label for="accessTokenInput">Código de acesso
             <input id="accessTokenInput" type="password" inputmode="text" autocomplete="off" placeholder="Digite o código de acesso">
           </label>
+
           <div class="token-chip-row">
             <span>Acesso protegido</span>
             <span>Validação local</span>
             <span>Ambiente de estudo</span>
           </div>
-          <div class="token-help">Digite seu código de acesso autorizado. A tela de acesso é exibida sempre que o arquivo for aberto.</div>
+
           <div class="token-actions">
             <button id="unlockAccessBtn" class="primary" type="button">Liberar acesso</button>
             <button id="toggleAccessToken" class="ghost" type="button">Mostrar código</button>
           </div>
-          <div id="tokenStatus" class="token-status"></div>
-          <div id="tokenSuccess" class="token-success"></div>
+
+          <div id="tokenStatus" class="token-status" role="status" aria-live="polite"></div>
+          <div id="tokenSuccess" class="token-success" role="status" aria-live="polite"></div>
         </div>
       </div>
     </div>
@@ -663,7 +798,7 @@ html{font-size:var(--a11y-font-scale,100%)}
         <path d="M22 36.5v8c6 3.8 14 3.8 20 0v-8L32 42z" fill="url(#bookG)"/>
         <circle cx="49.5" cy="23" r="3" fill="#45E6FF"/><circle cx="53" cy="31" r="2" fill="#8B5CFF"/>
       </svg>
-      <div class="brand-text"><small style="color:#42d5ff;font-weight:800;letter-spacing:.08em">V3.5 • PROFESSIONAL • VIDEOAULAS HÍBRIDAS</small><strong>Concursor<span>IA</span> <em>Tech</em></strong><small>Estudo inteligente • prática deliberada • pensamento crítico</small></div>
+      <div class="brand-text"><small style="color:#42d5ff;font-weight:800;letter-spacing:.08em">V3.6.4 • PROFESSIONAL • AUTENTICAÇÃO LOCAL CORRIGIDA</small><strong>Concursor<span>IA</span> <em>Tech</em></strong><small>Estudo inteligente • prática deliberada • pensamento crítico</small></div>
     </div>
     <div class="top-actions">
       <button id="accessibilityBtn" class="accessibility-trigger" type="button" aria-haspopup="dialog" aria-controls="accessibilityPanel" aria-label="Abrir painel de acessibilidade">♿ <span>Acessibilidade</span></button>
@@ -1055,6 +1190,62 @@ html{font-size:var(--a11y-font-scale,100%)}
     <div><span>Objetivo</span><strong>Recuperar</strong><small>não apenas reler</small></div>
   </div>
 
+
+  <article class="panel mini-mindmap-suite">
+    <div class="mini-suite-head">
+      <div>
+        <span class="eyebrow">MAPAS INDIVIDUAIS • PEQUENOS GRUPOS DE ASSUNTOS</span>
+        <h2>Mapas mentais ilustrados</h2>
+        <p>Blocos curtos, associação visual e perguntas-chave para fixação. O foco aqui é organizar <strong>um assunto por vez</strong> ou pequenos grupos conceituais, em estilo semelhante ao modelo enviado.</p>
+      </div>
+      <div class="mini-suite-summary">
+        <strong id="miniMindMapCount">0</strong>
+        <span>mapas ilustrados disponíveis</span>
+      </div>
+    </div>
+
+    <div class="mini-suite-toolbar">
+      <label>Disciplina
+        <select id="miniMindMapSubject">
+          <option value="">Todas</option>
+        </select>
+      </label>
+      <label>Buscar tema
+        <input id="miniMindMapSearch" type="search" placeholder="Ex.: tendências pedagógicas">
+      </label>
+      <div class="mini-suite-actions">
+        <button id="miniMindMapPrev" class="ghost" type="button">← Voltar</button>
+        <button id="miniMindMapRandom" class="secondary" type="button">↻ Aleatório</button>
+        <button id="miniMindMapNext" class="primary" type="button">Avançar →</button>
+      </div>
+    </div>
+
+    <div class="mini-suite-stage">
+      <div id="miniMindMapHost"></div>
+      <aside class="mini-suite-side">
+        <div class="mini-side-card">
+          <span class="eyebrow">SEQUÊNCIA DE ESTUDO</span>
+          <h3>Como usar</h3>
+          <ol>
+            <li>Leia primeiro o conceito central.</li>
+            <li>Compare “o que é” com a aplicação prática.</li>
+            <li>Use os termos fundamentais para revisar linguagem técnica.</li>
+            <li>Responda mentalmente às perguntas-chave.</li>
+          </ol>
+        </div>
+        <div class="mini-side-card">
+          <span class="eyebrow">SITUAÇÃO ATUAL</span>
+          <h3 id="miniMindMapTitleSide">Mapa mental</h3>
+          <p id="miniMindMapProgressText">Mapa 1 de 1</p>
+          <div id="miniMindMapTagList" class="mini-tag-list"></div>
+        </div>
+      </aside>
+    </div>
+
+    <div id="miniMindMapThumbs" class="mini-thumb-strip"></div>
+  </article>
+
+
   <article class="panel mindmap-method">
     <div>
       <span class="eyebrow">MÉTODO VISUAL</span>
@@ -1342,7 +1533,141 @@ html{font-size:var(--a11y-font-scale,100%)}
   </div>
 </dialog>
 
-  <script>
+  
+<script id="v364-local-auth">
+(function(){
+  'use strict';
+
+  const AUTH_KEY='ct_local_access_v364';
+  const AUTH_DURATION=24*60*60*1000;
+  const VALID_CODES=new Set(['aprovacao','nomeacao','posse','exercicio']);
+
+  function norm(v){
+    try{
+      return String(v||'').trim().toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g,'')
+        .replace(/[^a-z]/g,'');
+    }catch(e){
+      return String(v||'').trim().toLowerCase().replace(/[^a-z]/g,'');
+    }
+  }
+
+  function getGate(){ return document.getElementById('accessGate'); }
+  function getInput(){ return document.getElementById('accessTokenInput'); }
+  function getStatus(){ return document.getElementById('tokenStatus'); }
+  function getSuccess(){ return document.getElementById('tokenSuccess'); }
+
+  function unlock(){
+    document.body.classList.remove('access-locked');
+    const gate=getGate();
+    if(gate)gate.classList.add('hidden');
+  }
+
+  function saveSession(){
+    const now=Date.now();
+    const record={createdAt:now,expiresAt:now+AUTH_DURATION};
+    try{localStorage.setItem(AUTH_KEY,JSON.stringify(record));}catch(e){}
+  }
+
+  function validSavedSession(){
+    try{
+      const raw=localStorage.getItem(AUTH_KEY);
+      if(!raw)return false;
+      const s=JSON.parse(raw);
+      if(!s || Number(s.expiresAt||0)<=Date.now()){
+        localStorage.removeItem(AUTH_KEY);
+        return false;
+      }
+      return true;
+    }catch(e){
+      try{localStorage.removeItem(AUTH_KEY);}catch(_){}
+      return false;
+    }
+  }
+
+  function authenticate(){
+    const input=getInput(),status=getStatus(),success=getSuccess();
+    if(!input)return;
+
+    if(status)status.classList.remove('show');
+    if(success)success.classList.remove('show');
+
+    const value=input.value||'';
+    if(!value.trim()){
+      if(status){
+        status.textContent='Digite seu código de acesso.';
+        status.classList.add('show');
+      }
+      input.focus();
+      return;
+    }
+
+    if(VALID_CODES.has(norm(value))){
+      saveSession();
+      if(success){
+        success.textContent='Acesso liberado.';
+        success.classList.add('show');
+      }
+      setTimeout(unlock,180);
+      return;
+    }
+
+    if(status){
+      status.textContent='Código não reconhecido. Verifique o acesso informado e tente novamente.';
+      status.classList.add('show');
+    }
+    input.select();
+  }
+
+  function setup(){
+    if(validSavedSession()){
+      unlock();
+      return;
+    }
+
+    const input=getInput();
+    const button=document.getElementById('unlockAccessBtn');
+    const toggle=document.getElementById('toggleAccessToken');
+
+    if(button)button.addEventListener('click',authenticate);
+
+    if(input){
+      input.addEventListener('keydown',function(e){
+        if(e.key==='Enter'){
+          e.preventDefault();
+          authenticate();
+        }
+      });
+      setTimeout(()=>input.focus(),60);
+    }
+
+    if(toggle && input){
+      toggle.addEventListener('click',function(){
+        const show=input.type==='password';
+        input.type=show?'text':'password';
+        toggle.textContent=show?'Ocultar código':'Mostrar código';
+      });
+    }
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',setup,{once:true});
+  }else{
+    setup();
+  }
+
+  window.ConcursorIALocalAuth={
+    unlockForCurrentSession:unlock,
+    clear:function(){
+      try{localStorage.removeItem(AUTH_KEY);}catch(e){}
+      location.reload();
+    }
+  };
+})();
+</script>
+
+<script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const store={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set(k,v){localStorage.setItem(k,JSON.stringify(v))}};
 const state={questions:store.get('ct_questions',[]),answers:store.get('ct_answers',[]),notes:store.get('ct_notes',{}),lessonDone:store.get('ct_lesson_done',{}),flashcards:store.get('ct_flashcards',[]),flashProgress:store.get('ct_flash_progress',{}),flashFavs:store.get('ct_flash_favs',{}),tracks:store.get('ct_tracks',null),minutes:store.get('ct_minutes',0),current:null};
@@ -1706,6 +2031,7 @@ function go(id){
   $$('.view').forEach(v=>v.classList.toggle('active',v.id===id));
   $$('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.view===id));
   $('#sidebar').classList.remove('open');
+  document.body.classList.remove('sidebar-open');
 
   if(id==='dashboard')renderDashboard();
   if(id==='trilhas')renderTracks();
@@ -1714,11 +2040,25 @@ function go(id){
   if(id==='revisao')renderReviews();
   if(id==='erros')renderErrors();
   if(id==='flashcards')renderFlashcards();
-  if(id==='mapas'){initMindMaps();renderMindMapList(false)}
+  if(id==='mapas'){initMiniMindMaps();initMindMaps();renderMindMapList(false)}
   if(id==='pedagogicos'){renderPedagogicalModule();renderPedPrompt()}
   if(id==='videoaulas'){initVideoModule();renderVideoLibrary()}
 }
-$$('.nav-item').forEach(b=>b.onclick=()=>go(b.dataset.view));$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));$('#menuBtn').onclick=()=>$('#sidebar').classList.toggle('open');
+$$('.nav-item').forEach(b=>b.onclick=()=>go(b.dataset.view));$$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));function setSidebarOpen(open){
+  const sidebar=$('#sidebar');
+  sidebar.classList.toggle('open',!!open);
+  document.body.classList.toggle('sidebar-open',!!open);
+}
+$('#menuBtn').onclick=()=>setSidebarOpen(!$('#sidebar').classList.contains('open'));
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&$('#sidebar').classList.contains('open'))setSidebarOpen(false);
+});
+document.addEventListener('pointerdown',e=>{
+  if(window.innerWidth<=620 && $('#sidebar').classList.contains('open')){
+    const sidebar=$('#sidebar'),menu=$('#menuBtn');
+    if(!sidebar.contains(e.target)&&!menu.contains(e.target))setSidebarOpen(false);
+  }
+});
 function updateNet(){const on=navigator.onLine;$('#netStatus').textContent=on?'● online':'● offline';$('#netStatus').style.color=on?'#31d7a6':'#ffc857'}addEventListener('online',updateNet);addEventListener('offline',updateNet);updateNet();
 $('#themeBtn').onclick=()=>{document.body.classList.toggle('light');store.set('ct_light',document.body.classList.contains('light'))};if(store.get('ct_light',false))document.body.classList.add('light');
 let deferredPrompt;addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installBtn').hidden=false});$('#installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('#installBtn').hidden=true}};
@@ -2158,6 +2498,99 @@ function renderErrors(){const arr=state.answers.filter(a=>!a.correct).slice().re
 
 const MINDMAP_TARGET=250;
 let MINDMAPS=[],mindMapFiltered=[],mindMapPage=0,mindMapSelected=null,mindMapRecallMode=false;
+const MINI_MINDMAPS_DATA=[{"id": "mini-pedagogicas", "subject": "Conhecimentos Pedagógicos", "title": "Tendências pedagógicas", "subtitle": "Diferentes formas de ensinar e aprender.", "what": "São maneiras de entender como o professor ensina, como o aluno aprende e qual é o papel da escola.", "analogy": "É como aprender a andar de bicicleta: cada abordagem ensina de um jeito diferente, com níveis diversos de direção, autonomia e diálogo.", "applications": [["Tradicional", "aula expositiva, memorização e prova."], ["Renovada", "experiências, participação e descoberta."], ["Tecnicista", "etapas, metas, treino e eficiência."], ["Crítica", "realidade social, reflexão e transformação."]], "terms": [["Tendência pedagógica", "forma de pensar a educação."], ["Prática pedagógica", "ações concretas do professor."], ["Ensino-aprendizagem", "modo como o estudante constrói conhecimento."]], "questions": ["Quem ensina?", "Quem aprende?", "Como se ensina?", "Para que se ensina?"], "tags": ["pedagogia", "provas do DF", "fundamentos"]}, {"id": "mini-curriculo", "subject": "Conhecimentos Pedagógicos", "title": "Currículo escolar", "subtitle": "Seleção, organização e intenção do que se ensina.", "what": "Currículo é o conjunto de conhecimentos, valores, experiências e objetivos que orientam o trabalho pedagógico da escola.", "analogy": "Pense no currículo como um roteiro de viagem: ele define para onde se quer ir, o que é essencial conhecer e quais caminhos serão escolhidos.", "applications": [["Formal", "documentos, objetivos e conteúdos previstos."], ["Real", "aquilo que de fato acontece na prática escolar."], ["Oculto", "valores e mensagens aprendidos implicitamente."], ["Avaliação", "acompanha se o percurso faz sentido."]], "terms": [["Currículo formal", "planejado e registrado."], ["Currículo real", "vivenciado no cotidiano."], ["Currículo oculto", "aprendizagens não declaradas."]], "questions": ["O que selecionar?", "Como organizar?", "Por que ensinar isso?", "Que valores aparecem?"], "tags": ["currículo", "PPP", "planejamento"]}, {"id": "mini-ppp", "subject": "Conhecimentos Pedagógicos", "title": "Projeto Político-Pedagógico", "subtitle": "Identidade, direção e compromisso da escola.", "what": "O PPP expressa princípios, metas, diagnóstico e ações da escola, articulando dimensões pedagógicas, administrativas e sociais.", "analogy": "Funciona como a carta de navegação da escola: mostra onde ela está, para onde quer seguir e como pretende avançar coletivamente.", "applications": [["Diagnóstico", "lê a realidade da comunidade escolar."], ["Metas", "define prioridades e objetivos."], ["Participação", "envolve gestão, docentes, estudantes e famílias."], ["Acompanhamento", "precisa ser revisado e atualizado."]], "terms": [["Político", "compromisso com sociedade e cidadania."], ["Pedagógico", "organização do ensino e da aprendizagem."], ["Coletivo", "construção participativa."]], "questions": ["Quem participa?", "Qual realidade se analisa?", "Que metas orientam a escola?", "Como acompanhar?"], "tags": ["PPP", "gestão", "planejamento"]}, {"id": "mini-avaliacao", "subject": "Conhecimentos Pedagógicos", "title": "Avaliação da aprendizagem", "subtitle": "Avaliar para compreender, orientar e replanejar.", "what": "Avaliação é um processo de coleta e interpretação de evidências para apoiar decisões pedagógicas e favorecer a aprendizagem.", "analogy": "É como usar um painel de bordo: não serve apenas para dar nota, mas para mostrar onde há avanços, dificuldades e ajustes necessários.", "applications": [["Diagnóstica", "identifica conhecimentos prévios."], ["Formativa", "acompanha o percurso e orienta intervenções."], ["Somativa", "sintetiza resultados em um momento final."], ["Critério", "deve ser coerente com os objetivos de aprendizagem."]], "terms": [["Diagnóstica", "ponto de partida."], ["Formativa", "regula o processo."], ["Somativa", "sintetiza resultados."]], "questions": ["O que evidenciar?", "Quando avaliar?", "Como devolver resultados?", "Como replanejar?"], "tags": ["avaliação", "aprendizagem", "intervenção"]}, {"id": "mini-planejamento", "subject": "Conhecimentos Pedagógicos", "title": "Planejamento de ensino", "subtitle": "Intencionalidade, coerência e sequência didática.", "what": "Planejar é antecipar objetivos, conteúdos, estratégias, recursos, tempo e formas de avaliação, articulando tudo com o contexto da turma.", "analogy": "Planejamento é como montar um mapa de rota: ele não engessa a viagem, mas evita improvisos sem direção.", "applications": [["Objetivos", "definem o que se espera que o aluno desenvolva."], ["Conteúdos", "selecionados com critérios."], ["Metodologias", "adequadas ao perfil da turma."], ["Flexibilidade", "permite ajustes conforme a realidade."]], "terms": [["Objetivo", "resultado esperado."], ["Estratégia", "caminho metodológico."], ["Sequência", "ordem didática das ações."]], "questions": ["O que ensinar?", "Como ensinar?", "Com que recursos?", "Como verificar resultados?"], "tags": ["planejamento", "didática", "sequência"]}, {"id": "mini-didatica", "subject": "Conhecimentos Pedagógicos", "title": "Didática", "subtitle": "Mediação entre conhecimento, ensino e aprendizagem.", "what": "Didática estuda os processos de ensino, as formas de organização do trabalho docente e as condições que favorecem a aprendizagem.", "analogy": "É como a ponte entre o conteúdo e o estudante: sem mediação adequada, o conhecimento não chega de forma significativa.", "applications": [["Mediação", "traduz o conhecimento para situações de aprendizagem."], ["Metodologia", "define formas de apresentação e exploração."], ["Interação", "considera relações em sala."], ["Avaliação", "acompanha a efetividade das escolhas."]], "terms": [["Mediação", "aproxima sujeito e conhecimento."], ["Metodologia", "forma de organizar o ensino."], ["Interação", "trocas que produzem aprendizagem."]], "questions": ["Como mediar?", "Que estratégias escolher?", "Como manter sentido?", "Como ajustar o percurso?"], "tags": ["didática", "mediação", "docência"]}, {"id": "mini-inclusao", "subject": "Conhecimentos Pedagógicos", "title": "Educação inclusiva", "subtitle": "Acesso, participação e aprendizagem para todos.", "what": "Educação inclusiva busca garantir que todos os estudantes participem da vida escolar, com apoios, acessibilidade e respeito à diversidade.", "analogy": "É como preparar uma casa para receber pessoas diferentes: não se muda a pessoa para caber no espaço; adapta-se o espaço para acolher melhor.", "applications": [["Acessibilidade", "remove barreiras físicas, comunicacionais e pedagógicas."], ["Adaptação", "adequações de materiais e estratégias."], ["Participação", "todos aprendem em convivência."], ["Colaboração", "ação articulada entre escola, família e rede de apoio."]], "terms": [["Acessibilidade", "condição de acesso com autonomia."], ["Barreira", "obstáculo à participação."], ["Adequação", "ajuste necessário ao processo."]], "questions": ["Que barreiras existem?", "Que apoios são necessários?", "Como incluir sem isolar?", "Como acompanhar a participação?"], "tags": ["inclusão", "acessibilidade", "diversidade"]}, {"id": "mini-gestao", "subject": "Conhecimentos Pedagógicos", "title": "Gestão democrática", "subtitle": "Participação, diálogo e corresponsabilidade.", "what": "Gestão democrática envolve participação coletiva nas decisões da escola, transparência, escuta e compromisso com o projeto educativo.", "analogy": "Parece uma orquestra: diferentes pessoas têm funções distintas, mas o resultado depende de coordenação e participação harmônica.", "applications": [["Conselhos", "instâncias de debate e decisão."], ["Escuta", "voz ativa da comunidade escolar."], ["Transparência", "processos claros e compartilhados."], ["Corresponsabilidade", "compromisso distribuído."]], "terms": [["Participação", "intervenção com voz e decisão."], ["Colegiado", "grupo que delibera coletivamente."], ["Autonomia", "capacidade de decidir com responsabilidade."]], "questions": ["Quem decide?", "Como se participa?", "Que espaços de escuta existem?", "Como prestar contas?"], "tags": ["gestão", "participação", "escola"]}, {"id": "mini-freire", "subject": "Conhecimentos Pedagógicos", "title": "Paulo Freire", "subtitle": "Diálogo, criticidade e leitura do mundo.", "what": "A perspectiva freireana valoriza diálogo, problematização da realidade, consciência crítica e construção coletiva do conhecimento.", "analogy": "Ensinar, aqui, é como acender uma conversa que faz a pessoa enxergar melhor o mundo e agir sobre ele.", "applications": [["Educação bancária", "depósito de conteúdos, criticado por Freire."], ["Problematização", "questiona realidade vivida."], ["Temas geradores", "partem da experiência concreta."], ["Diálogo", "princípio central da prática educativa."]], "terms": [["Dialogicidade", "aprendizagem pela interlocução."], ["Problematização", "questionar o real para compreendê-lo."], ["Conscientização", "tomada crítica de consciência."]], "questions": ["O aluno é passivo?", "O que é tema gerador?", "Como ocorre o diálogo?", "Qual o sentido social da educação?"], "tags": ["Paulo Freire", "crítica", "dialogicidade"]}, {"id": "mini-saviani", "subject": "Conhecimentos Pedagógicos", "title": "Pedagogia histórico-crítica", "subtitle": "Da prática social à síntese transformadora.", "what": "A pedagogia histórico-crítica propõe apropriação sistematizada do saber, articulando conhecimento escolar e transformação da realidade.", "analogy": "É como subir uma escada consciente: parte-se da realidade, estuda-se com método e volta-se a ela com compreensão mais elaborada.", "applications": [["Prática social inicial", "ponto de partida."], ["Problematização", "perguntas sobre a realidade."], ["Instrumentalização", "acesso ao conhecimento sistematizado."], ["Catarse", "síntese superior e retorno à prática social."]], "terms": [["Problematização", "questões sobre a realidade."], ["Instrumentalização", "apropriação de ferramentas conceituais."], ["Catarse", "síntese qualitativa do processo."]], "questions": ["Onde começa o processo?", "O que é instrumentalização?", "Qual o papel da catarse?", "Como retorna à prática social?"], "tags": ["Saviani", "histórico-crítica", "transformação"]}, {"id": "mini-vygotsky", "subject": "Conhecimentos Pedagógicos", "title": "Vygotsky", "subtitle": "Interação social e mediação no desenvolvimento.", "what": "Para Vygotsky, o desenvolvimento cognitivo acontece pela interação social, pela linguagem e pela mediação cultural.", "analogy": "Aprender é como subir com ajuda: com mediação adequada, o estudante faz hoje com apoio o que amanhã fará sozinho.", "applications": [["Zona de desenvolvimento real", "o que o aluno já realiza sozinho."], ["Zona de desenvolvimento proximal", "o que consegue com ajuda."], ["Mediação", "intervenção de adultos, pares e signos."], ["Linguagem", "instrumento central do pensamento."]], "terms": [["ZDP", "distância entre o que faz sozinho e com ajuda."], ["Mediação", "apoio que reorganiza a aprendizagem."], ["Internalização", "passagem do social ao individual."]], "questions": ["O que é ZDP?", "Quem medeia?", "Qual o papel da linguagem?", "Como o social vira individual?"], "tags": ["Vygotsky", "desenvolvimento", "mediação"]}, {"id": "mini-piaget", "subject": "Conhecimentos Pedagógicos", "title": "Piaget", "subtitle": "Construção ativa do conhecimento.", "what": "Piaget compreende o desenvolvimento como construção progressiva em estágios, com assimilação, acomodação e equilibração.", "analogy": "É como montar estruturas com peças: o sujeito reorganiza o que sabe para adaptar-se a novas situações.", "applications": [["Assimilação", "interpreta o novo com esquemas existentes."], ["Acomodação", "ajusta esquemas diante do novo."], ["Equilibração", "busca de equilíbrio cognitivo."], ["Estágios", "formas de pensar se reorganizam ao longo do desenvolvimento."]], "terms": [["Assimilação", "incorporação do novo."], ["Acomodação", "modificação dos esquemas."], ["Equilibração", "regulação do desenvolvimento."]], "questions": ["Como o sujeito aprende?", "O que muda nos estágios?", "O que é assimilação?", "Quando ocorre acomodação?"], "tags": ["Piaget", "estágios", "cognição"]}, {"id": "mini-redacao", "subject": "Redação", "title": "Boa redação", "subtitle": "Tese clara, argumentos consistentes e linguagem adequada.", "what": "Redação de qualidade articula tema, tese, repertório pertinente, progressão argumentativa e revisão final cuidadosa.", "analogy": "É como construir uma casa: a tese é a estrutura, os argumentos são os pilares e a conclusão fecha a obra.", "applications": [["Leitura do tema", "compreender exatamente o comando."], ["Planejamento", "definir tese e argumentos antes de escrever."], ["Coesão", "usar conectivos com lógica."], ["Revisão", "corrigir coerência, gramática e pontuação."]], "terms": [["Tese", "posição defendida no texto."], ["Argumento", "razão que sustenta a tese."], ["Coesão", "articulação entre partes do texto."]], "questions": ["Qual tese defendo?", "Que argumentos a sustentam?", "Como organizar parágrafos?", "O que revisar ao final?"], "tags": ["redação", "argumentação", "prova discursiva"]}, {"id": "mini-interpretacao", "subject": "Língua Portuguesa", "title": "Interpretação de textos", "subtitle": "Ler o que o texto diz, e não o que o leitor imagina.", "what": "Interpretar exige identificar informações explícitas, relações lógicas, tese, pressupostos e inferências sustentadas pelo texto.", "analogy": "É como seguir um mapa com legenda: cada pista precisa estar no próprio texto, não apenas na intuição do leitor.", "applications": [["Explícito", "informação claramente enunciada."], ["Inferência", "conclusão apoiada em indícios textuais."], ["Tese", "ideia central defendida."], ["Conectivos", "indicam relações entre partes."]], "terms": [["Explícito", "dito diretamente."], ["Inferência", "dedução sustentada pelo texto."], ["Pressuposto", "conteúdo implícito assumido como dado."]], "questions": ["O texto afirma ou sugere?", "Qual é a ideia central?", "Que conectivo muda o sentido?", "Há extrapolação?"], "tags": ["português", "interpretação", "leitura"]}, {"id": "mini-constitucional", "subject": "Direito Constitucional", "title": "Direitos fundamentais", "subtitle": "Proteção da dignidade, liberdade e igualdade.", "what": "Direitos fundamentais são posições jurídicas essenciais à dignidade da pessoa humana e ao funcionamento do Estado Democrático de Direito.", "analogy": "Funcionam como um escudo de proteção: delimitam o poder estatal e amparam a atuação do cidadão.", "applications": [["Liberdade", "protege escolhas e manifestações."], ["Igualdade", "combate discriminações arbitrárias."], ["Garantias", "instrumentos de defesa de direitos."], ["Interpretação", "depende do caso concreto e da Constituição."]], "terms": [["Direito fundamental", "bem jurídico constitucionalmente protegido."], ["Garantia", "mecanismo de proteção do direito."], ["Efetividade", "realização concreta do direito."]], "questions": ["É direito ou garantia?", "Qual bem jurídico está protegido?", "Que limite ao Estado aparece?", "Como aplicar ao caso?"], "tags": ["constitucional", "direitos", "cidadania"]}, {"id": "mini-administrativo", "subject": "Direito Administrativo", "title": "Atos administrativos", "subtitle": "Manifestação da Administração com efeitos jurídicos.", "what": "Atos administrativos são manifestações da Administração Pública destinadas a produzir efeitos jurídicos, sob regime de direito público.", "analogy": "É como um comando oficial com forma, motivo e finalidade: se uma peça falha, o ato pode ser inválido.", "applications": [["Competência", "quem pode praticar o ato."], ["Finalidade", "para que o ato existe."], ["Motivo", "situação de fato e de direito."], ["Forma", "modo de exteriorização do ato."]], "terms": [["Atributo", "característica do ato administrativo."], ["Vício", "defeito no ato."], ["Anulação", "retirada do ato inválido."]], "questions": ["Quem praticou o ato?", "O motivo é adequado?", "Qual finalidade foi buscada?", "Há vício ou regularidade?"], "tags": ["administrativo", "atos", "administração pública"]}, {"id": "mini-ti-seguranca", "subject": "Informática", "title": "Segurança da informação", "subtitle": "Proteger dados, sistemas e serviços.", "what": "Segurança da informação envolve práticas e controles para preservar confidencialidade, integridade, disponibilidade e rastreabilidade.", "analogy": "É como cuidar de uma casa com fechaduras, alarmes, regras e registro de entradas: proteção depende de camadas.", "applications": [["Confidencialidade", "acesso só por quem pode."], ["Integridade", "dados sem alteração indevida."], ["Disponibilidade", "informação acessível quando necessária."], ["Phishing", "engenharia social que tenta enganar o usuário."]], "terms": [["Autenticação", "verifica identidade."], ["Autorização", "define permissões."], ["Backup", "cópia para recuperação."]], "questions": ["Quem pode acessar?", "Como evitar adulteração?", "Como manter disponibilidade?", "Que ameaça aparece no caso?"], "tags": ["TI", "segurança", "phishing"]}];
+let miniMindMapsReady=false,miniMindMapFiltered=[],miniMindMapIndex=0;
+
+function miniMapsByFilter(){
+  const subject=$('#miniMindMapSubject')?.value||'';
+  const q=($('#miniMindMapSearch')?.value||'').trim().toLowerCase();
+  return MINI_MINDMAPS_DATA.filter(item=>{
+    const bucket=`${item.subject} ${item.title} ${item.subtitle} ${item.what} ${item.tags.join(' ')}`.toLowerCase();
+    return (!subject||item.subject===subject)&&(!q||bucket.includes(q));
+  });
+}
+function renderMiniMindMapCard(item){
+  const appItems=(item.applications||[]).map(([a,b])=>`<div class="mini-app-item"><b>${esc(a)}</b><span>${esc(b)}</span></div>`).join('');
+  const termItems=(item.terms||[]).map(([a,b],idx)=>{
+    const emojis=['📚','⚙️','💡','🧭','📝'];
+    return `<div class="mini-term-item"><div>${emojis[idx%emojis.length]}</div><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`;
+  }).join('');
+  const qs=(item.questions||[]).map(q=>`<div class="mini-question-pill">${esc(q)}</div>`).join('');
+  return `<div class="mini-map-card">
+    <div class="mini-map-grid">
+      <section class="mini-bubble bubble-what">
+        <h4><strong>1</strong> O que é?</h4>
+        <p>${esc(item.what)}</p>
+      </section>
+      <section class="mini-bubble bubble-analogy">
+        <h4><strong>2</strong> Analogia simples</h4>
+        <p>${esc(item.analogy)}</p>
+      </section>
+      <div class="mini-center-topic">
+        <h3>${esc(item.title)}</h3>
+        <p>${esc(item.subtitle)}</p>
+        <span class="mini-open-book">📖</span>
+      </div>
+      <section class="mini-bubble bubble-application">
+        <h4><strong>3</strong> Aplicação prática</h4>
+        <div class="mini-application-list">${appItems}</div>
+      </section>
+      <section class="mini-bubble bubble-terms">
+        <h4><strong>4</strong> 3 termos fundamentais</h4>
+        <div class="mini-term-list">${termItems}</div>
+      </section>
+    </div>
+    <div class="mini-footer-questions">
+      <strong>Perguntas-chave</strong>
+      ${qs}
+    </div>
+  </div>`;
+}
+function renderMiniMindMaps(reset=false){
+  if(reset)miniMindMapIndex=0;
+  miniMindMapFiltered=miniMapsByFilter();
+  $('#miniMindMapCount').textContent=miniMindMapFiltered.length.toLocaleString('pt-BR');
+  if(!miniMindMapFiltered.length){
+    $('#miniMindMapHost').innerHTML='<div class="mini-empty">Nenhum mapa encontrado com os filtros atuais.</div>';
+    $('#miniMindMapThumbs').innerHTML='';
+    $('#miniMindMapTitleSide').textContent='Nenhum mapa';
+    $('#miniMindMapProgressText').textContent='0 resultados';
+    $('#miniMindMapTagList').innerHTML='';
+    return;
+  }
+  if(miniMindMapIndex<0)miniMindMapIndex=miniMindMapFiltered.length-1;
+  if(miniMindMapIndex>=miniMindMapFiltered.length)miniMindMapIndex=0;
+  const item=miniMindMapFiltered[miniMindMapIndex];
+  $('#miniMindMapHost').innerHTML=renderMiniMindMapCard(item);
+  $('#miniMindMapTitleSide').textContent=item.title;
+  $('#miniMindMapProgressText').textContent=`Mapa ${miniMindMapIndex+1} de ${miniMindMapFiltered.length}`;
+  $('#miniMindMapTagList').innerHTML=(item.tags||[]).map(t=>`<span>${esc(t)}</span>`).join('');
+  $('#miniMindMapThumbs').innerHTML=miniMindMapFiltered.map((m,i)=>`<button type="button" class="mini-thumb ${i===miniMindMapIndex?'active':''}" data-mini-map="${attr(m.id)}"><b>${esc(m.title)}</b><span>${esc(m.subject)}</span></button>`).join('');
+  $$('#miniMindMapThumbs .mini-thumb').forEach(btn=>{
+    btn.onclick=()=>{
+      const idx=miniMindMapFiltered.findIndex(m=>m.id===btn.dataset.miniMap);
+      if(idx>=0){miniMindMapIndex=idx;renderMiniMindMaps(false);}
+    }
+  });
+}
+function initMiniMindMaps(){
+  if(miniMindMapsReady)return;
+  const subjects=[...new Set(MINI_MINDMAPS_DATA.map(x=>x.subject))].sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  $('#miniMindMapSubject').innerHTML='<option value="">Todas</option>'+subjects.map(s=>`<option>${esc(s)}</option>`).join('');
+  $('#miniMindMapSubject').onchange=()=>renderMiniMindMaps(true);
+  $('#miniMindMapSearch').oninput=()=>renderMiniMindMaps(true);
+  $('#miniMindMapPrev').onclick=()=>{miniMindMapIndex--;renderMiniMindMaps(false)};
+  $('#miniMindMapNext').onclick=()=>{miniMindMapIndex++;renderMiniMindMaps(false)};
+  $('#miniMindMapRandom').onclick=()=>{
+    miniMindMapFiltered=miniMapsByFilter();
+    if(!miniMindMapFiltered.length)return renderMiniMindMaps(true);
+    miniMindMapIndex=Math.floor(Math.random()*miniMindMapFiltered.length);
+    renderMiniMindMaps(false);
+  };
+  miniMindMapsReady=true;
+  renderMiniMindMaps(true);
+}
+
 
 function mmClean(v=''){return String(v).replace(/\s+/g,' ').trim()}
 function mmShort(v,max=135){v=mmClean(v);return v.length<=max?v:v.slice(0,max-1).replace(/\s+\S*$/,'')+'…'}
@@ -2624,53 +3057,6 @@ $('#importBtn').onclick=async()=>{const f=$('#importFile').files[0];if(!f)return
 $('#exportBtn').onclick=()=>{const payload={exportedAt:new Date().toISOString(),app:'ConcursorIA Tech',questions:state.questions,answers:state.answers,notes:state.notes,lessonDone:state.lessonDone,flashcards:state.flashcards,flashProgress:state.flashProgress,flashFavs:state.flashFavs,tracks:state.tracks,minutes:state.minutes};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='concursorIA-tech-backup.json';a.click();URL.revokeObjectURL(a.href)};
 $('#clearBtn').onclick=()=>{if(confirm('Apagar todos os dados locais deste aplicativo neste dispositivo?')){['ct_questions','ct_answers','ct_notes','ct_lesson_done','ct_flashcards','ct_flash_progress','ct_flash_favs','ct_tracks','ct_minutes'].forEach(k=>localStorage.removeItem(k));location.reload()}};
 function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function attr(v=''){return esc(v)}function hash(s=''){let h=0;for(let i=0;i<s.length;i++)h=((h<<5)-h)+s.charCodeAt(i)|0;return 'q'+Math.abs(h)}function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
-
-const ACCESS_TOKEN_VALUES=new Set(['aprovacao','nomeacao','posse','exercicio']);
-function normalizeAccessToken(v=''){
-  return String(v)
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,'')
-    .replace(/ç/g,'c')
-    .replace(/[^a-z]/g,'');
-}
-function setAccessUnlocked(){
-    document.body.classList.remove('access-locked');
-  $('#accessGate').classList.add('hidden');
-}
-function validateAccessToken(raw){
-  return ACCESS_TOKEN_VALUES.has(normalizeAccessToken(raw));
-}
-function tryUnlockAccess(){
-  const input=$('#accessTokenInput'),status=$('#tokenStatus'),ok=$('#tokenSuccess');
-  const raw=input.value||'';
-  status.classList.remove('show'); ok.classList.remove('show');
-  if(!raw.trim()){
-    status.textContent='Digite um código de acesso para continuar.';
-    status.classList.add('show');
-    input.focus();
-    return;
-  }
-  if(validateAccessToken(raw)){
-    ok.textContent='Acesso liberado. Ambiente desbloqueado com sucesso.';
-    ok.classList.add('show');
-    setTimeout(()=>{setAccessUnlocked();toast('Acesso liberado. Bom estudo!');},550);
-    return;
-  }
-  status.textContent='Código não reconhecido. Verifique o acesso informado e tente novamente.';
-  status.classList.add('show');
-  input.select();
-}
-$('#unlockAccessBtn').onclick=tryUnlockAccess;
-$('#toggleAccessToken').onclick=()=>{
-  const input=$('#accessTokenInput');
-  const show=input.type==='password';
-  input.type=show?'text':'password';
-  $('#toggleAccessToken').textContent=show?'Ocultar código':'Mostrar código';
-};
-$('#accessTokenInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();tryUnlockAccess()}});
-$('#accessTokenInput').focus()
 
 
 
